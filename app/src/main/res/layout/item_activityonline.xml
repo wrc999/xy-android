@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:id="@+id/item_activityOnLine"
+    android:background="@drawable/abc_popup_background_mtrl_mult"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/activityOnLine_pic"
+        android:src="@mipmap/bg"
+        android:scaleType="fitXY"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+    <TextView
+        android:id="@+id/activityOnLine_name"
+        android:text="网红挑战赛"
+        android:textSize="@dimen/textsize"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:singleLine="true"
+        android:maxEms="10"
+        android:ellipsize="end"
+        android:layout_alignBottom="@id/activityOnLine_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/activityOnLine_ava"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/cat"
+        android:scaleType="fitXY"
+        app:riv_oval="true"/>
+    <TextView
+        android:id="@+id/activityOnLine_time"
+        android:text="2017.1.1-2017.2.2"
+        android:textSize="@dimen/textsize"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp" />
+</RelativeLayout>

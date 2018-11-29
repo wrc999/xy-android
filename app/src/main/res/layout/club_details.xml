@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="e.administrator.xy.activity.clubDetails">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentTop="true">
+        <RelativeLayout
+            android:id="@+id/clubDetail_goBack"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/go_back"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/image"
+                android:text="返回"
+                android:textSize="@dimen/textsize"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black_de" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="社团详情"
+            android:textSize="@dimen/textsize"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black_de" />
+    </RelativeLayout>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_marginBottom="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/clubDetailSlogan"
+                android:text="社团简介fdsfdsfdsfsfdfds"
+                android:gravity="center"
+                android:textSize="18dp"
+                android:textColor="@color/black_de"
+                android:background="@mipmap/clubdetailbg"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:layout_marginTop="-30dp"
+                android:id="@+id/clubDetailAva"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@mipmap/cat"
+                android:scaleType="fitXY"
+                app:riv_oval="true"/>
+            <TextView
+                android:id="@+id/clubDetailName"
+                android:text="轮滑协会"
+                android:textSize="@dimen/textsize"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!--分割线-->
+            <LinearLayout
+                android:background="@color/bgGray"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="成员"
+                    android:textSize="@dimen/textsize"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/memberDetail"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="1人"
+                        android:textSize="@dimen/textsize"
+                        android:id="@+id/clubDetailMember"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@mipmap/go"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/clubMember"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+            <!--分割线-->
+            <LinearLayout
+                android:background="@color/bgGray"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@mipmap/location"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="火星大学"
+                    android:textSize="@dimen/textsize"
+                    android:id="@+id/clubDetailSchool"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:background="@color/bgGray"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@mipmap/intro"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="什么都没有哦"
+                    android:textSize="@dimen/textsize"
+                    android:id="@+id/clubDetailIntro"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!--分割线-->
+            <LinearLayout
+                android:background="@color/bgGray"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"></LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="社团照片"
+                    android:padding="10dp"
+                    android:textSize="@dimen/textsize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/clubPicDetail"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="0张"
+                        android:textSize="@dimen/textsize"
+                        android:id="@+id/clunDetailPicNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@mipmap/go"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/noneClubPic"
+                android:text="TA还没上传社团照片哦"
+                android:textSize="@dimen/textsize"
+                android:visibility="gone"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/clubPicRecyclerView"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@mipmap/clubactivity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="社团活动"
+                        android:textSize="@dimen/textsize"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/clubActivityDetail"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="1个"
+                        android:textSize="@dimen/textsize"
+                        android:id="@+id/clunDetailActivity"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@mipmap/go"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:background="@color/bgGray"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"></LinearLayout>
+            <LinearLayout
+                android:id="@+id/clubDetailChat"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:src="@mipmap/clubchat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="社团聊天"
+                        android:textSize="@dimen/textsize"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <TextView
+            android:id="@+id/clubDetailFocus"
+            android:text="关注"
+            android:textSize="@dimen/textsize"
+            android:gravity="center"
+            android:tag="focus"
+            android:background="@drawable/focus_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/clubDetailJoin"
+            android:text="申请加入"
+            android:textSize="@dimen/textsize"
+            android:gravity="center"
+            android:tag="join"
+            android:background="@drawable/join_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

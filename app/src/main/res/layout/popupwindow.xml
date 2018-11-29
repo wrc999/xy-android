@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/popupwindow_bg"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/add1"
+        android:padding="10dp"
+        android:background="@drawable/underline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/add1"/>
+        <TextView
+            android:text="添加好友"
+            android:paddingLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_de"
+            android:textSize="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/add2"
+        android:padding="10dp"
+        android:background="@drawable/underline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="3dp"
+            android:src="@mipmap/add2"/>
+        <TextView
+            android:text="发布心情"
+            android:layout_gravity="center"
+            android:paddingLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_de"
+            android:textSize="15dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/add3"
+        android:padding="10dp"
+        android:background="@drawable/underline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="3dp"
+            android:src="@mipmap/add3"/>
+        <TextView
+            android:text="发布活动"
+            android:paddingLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_de"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add4"
+        android:padding="10dp"
+        android:background="@drawable/underline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/club"/>
+        <TextView
+            android:text="创建社团"
+            android:paddingLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_de"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/add5"
+        android:padding="10dp"
+        android:background="@drawable/underline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/sharingtopic"/>
+        <TextView
+            android:text="话题分享"
+            android:paddingLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_de"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</LinearLayout>

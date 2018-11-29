@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="e.administrator.xy.activity.TalkAddActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentTop="true">
+        <RelativeLayout
+            android:id="@+id/talkAdd_returnTtab1"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/go_back"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/image"
+                android:text="返回"
+                android:textSize="@dimen/textsize"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black_de" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textsize"
+            android:text="发布动态"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black_de" />
+        <TextView
+            android:id="@+id/talkAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:textSize="@dimen/textsize"
+            android:textColor="@color/black_de"
+            android:text="发布"/>
+    </RelativeLayout>
+    <TextView
+        android:background="@color/bgGray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/talkAddTalkContent"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="10dp"
+            android:maxLength="100"
+            android:textSize="@dimen/textsize"
+            android:background="@null"
+            android:hint="分享新鲜事。。。。。。。。"/>
+        <TextView
+            android:layout_gravity="right"
+            android:padding="10dp"
+            android:text="(100)"
+            android:id="@+id/talkAdd_wordNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!-- 分割线 -->
+        <TextView
+            android:background="@color/bgGray"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+        <ImageView
+            android:id="@+id/talkAddTalkPhoto"
+            android:padding="10dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/talkadd"/>
+
+        <LinearLayout
+            android:id="@+id/talkAdd_topicSelect"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@mipmap/topic"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="话题"
+                    android:textSize="@dimen/textsize"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/talkAdd_topicName"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@mipmap/go"
+                    android:foregroundGravity="right"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

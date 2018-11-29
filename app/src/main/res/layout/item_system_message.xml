@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@drawable/abc_popup_background_mtrl_mult"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/item_systemMessage_ava"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:src="@mipmap/cat"
+        android:scaleType="fitXY"
+        app:riv_oval="true"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="用户名"
+                    android:id="@+id/item_systemMessage_nickName"
+                    android:textSize="@dimen/textsize"
+                    android:textStyle="bold"
+                    android:singleLine="true"
+                    android:maxEms="10"
+                    android:ellipsize="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="请求添加好友"
+                    android:textSize="@dimen/textsize"
+                    android:id="@+id/item_systemMessage_root"
+                    android:singleLine="true"
+                    android:maxEms="10"
+                    android:ellipsize="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:text="同意"
+                android:textSize="@dimen/textsize"
+                android:visibility="gone"
+                android:id="@+id/item_systemMessage_result"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/button_system_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="同意"
+                android:textSize="@dimen/textsize"
+                android:id="@+id/item_systemMessage_accept"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/button_system_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="拒绝"
+                android:textSize="@dimen/textsize"
+                android:id="@+id/item_systemMessage_refuse"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/button_system_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:text="附加消息"
+            android:id="@+id/item_systemMessage_reason"
+            android:textSize="@dimen/textsize"
+            android:singleLine="true"
+            android:maxEms="15"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

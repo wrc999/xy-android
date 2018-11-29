@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ff171b19"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="e.administrator.xy.activity.ImageBrowseActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/imageBrowseViewPager"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:id="@+id/imageBrowse_position"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

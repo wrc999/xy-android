@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#5da8f9</color>
+
+    <color name="bgLightGray">#F5F5F5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#5da8f9</color>
+    <color name="txtGray">#515151</color>
+    <color name="bgGray">	#DBDBDB</color>
+    <color name="navigationBg">#e6eef3</color>
+    <color name="wordColor">#293440</color>
+
+    <color name="chat_title_bg">#427BED</color>
+    <color name="google_red">#FFC93437</color>
+    <color name="google_blue">#FF375BF1</color>
+    <color name="google_yellow">#FFF7D23E</color>
+    <color name="google_green">#FF34A350</color>
+</resources>

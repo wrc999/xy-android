@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/abc_popup_background_mtrl_mult"
+    android:orientation="horizontal"
+    android:id="@+id/item_topic"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_width="80dp"
+        android:layout_height="80dp">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/topicAva"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/cat"
+            android:scaleType="fitXY"
+            app:riv_oval="true"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/topicName"
+            android:textSize="@dimen/textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="话题名" />
+        <TextView
+            android:id="@+id/topicIntro"
+            android:text="话题简介"
+            android:textSize="@dimen/textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/topicJoins"
+            android:text="讨论：2"
+            android:textSize="@dimen/textsize"
+            android:singleLine="true"
+            android:maxEms="18"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

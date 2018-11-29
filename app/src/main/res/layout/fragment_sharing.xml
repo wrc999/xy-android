@@ -1,0 +1,121 @@
+<com.cjj.MaterialRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:overlay="true"
+    app:wave_show="true"
+    app:wave_color="#90ffffff"
+    android:id="@+id/refresh_sharing"
+    tools:context="e.administrator.xy.fragment.sharing">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="@drawable/underline"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <ImageView
+                    android:src="@mipmap/sharinghotactivity"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="热么活动"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <!--轮播图-->
+            <com.youth.banner.Banner
+                android:id="@+id/sharingActivityBanner"
+                android:layout_width="match_parent"
+                app:image_scale_type="fit_xy"
+                android:layout_height="150dp" />
+
+            <LinearLayout
+                android:id="@+id/sharingAllTopic"
+                android:orientation="horizontal"
+                android:background="@drawable/underline"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <ImageView
+                    android:src="@mipmap/sharingtopic"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="话题广场"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/sharing_allTopic"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="全部话题"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/textsize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@mipmap/go"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/sharingHotTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="@drawable/underline"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <ImageView
+                    android:src="@mipmap/sharing"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="动态"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_xl"
+                android:layout_below="@id/xlTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</com.cjj.MaterialRefreshLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rl_chat_head"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:background="#5da8f9">
+            <ImageView
+                android:id="@+id/iv_return"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/whitereturn"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="吴瑞成"
+                android:textColor="#fff"
+                android:textSize="@dimen/textsize" />
+            <ImageView
+                android:id="@+id/chatroom_memberInfo"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/member" />
+        </RelativeLayout>
+        <cn.jiguang.imui.messages.MessageList
+            android:id="@+id/msg_list"
+            android:layout_marginBottom="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:avatarHeight="50dp"
+            app:avatarWidth="50dp"
+            app:bubbleMaxWidth="0.70"
+            app:dateTextSize="14sp"
+            app:receiveBubblePaddingLeft="20dp"
+            app:receiveBubblePaddingRight="10dp"
+            app:receiveTextColor="#ffffff"
+            app:receiveTextSize="18sp"
+            app:sendBubblePaddingLeft="10dp"
+            app:sendBubblePaddingRight="20dp"
+            app:sendTextColor="#7587A8"
+            app:sendTextSize="18sp" />
+    </LinearLayout>
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:id="@+id/scrollView"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:divider="@null"-->
+        <!--android:id="@+id/rv_chat_message"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1">-->
+    <!--</android.support.v7.widget.RecyclerView>-->
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/et_meg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/ivpicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/mypicture"/>
+        <Button
+            android:id="@+id/btn_send_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="发送"
+            android:textSize="@dimen/textsize"
+            android:textColor="@color/blue" />
+    </LinearLayout>
+</RelativeLayout>

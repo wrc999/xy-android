@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="e.administrator.xy.activity.activityDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentTop="true">
+        <RelativeLayout
+            android:id="@+id/activityDetail_goBack"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/go_back"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/image"
+                android:text="返回"
+                android:textSize="@dimen/textsize"
+                android:layout_centerVertical="true"
+                android:textColor="@color/black_de" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="活动详情"
+            android:textSize="@dimen/textsize"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black_de" />
+    </RelativeLayout>
+    <com.cjj.MaterialRefreshLayout
+        android:id="@+id/activityDetilsRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_marginBottom="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--1.轮播图-->
+            <com.youth.banner.Banner
+                android:id="@+id/activityDetailBanner"
+                android:layout_width="match_parent"
+                app:image_scale_type="fit_xy"
+                android:layout_height="150dp" />
+            <!-- 2.活动名 -->
+            <TextView
+                android:id="@+id/activityDetailName"
+                android:text="活动名"
+                android:textSize="@dimen/textsize"
+                android:padding="10dp"
+                android:textColor="@color/black_de"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <!-- 3.活动关键字 -->
+            <LinearLayout
+                android:id="@+id/activityDetailKeyWord"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--分割线-->
+            <LinearLayout
+                android:background="@color/bgGray"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"></LinearLayout>
+
+            <!-- 4.活动时间 -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@mipmap/clock"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/activityDetailTime"
+                    android:text="顶顶顶顶顶"
+                    android:textSize="@dimen/textsize"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black_de"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <!-- 5.活动地点 -->
+            <LinearLayout
+                android:id="@+id/activityDetailPlaceLinear"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@mipmap/location"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/activityDetailPlace"
+                    android:text="顶顶顶顶顶"
+                    android:textSize="@dimen/textsize"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black_de"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!--分割线-->
+            <LinearLayout
+                android:background="@color/bgGray"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"></LinearLayout>
+
+            <!-- 报名列表 -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="报名人数"
+                    android:textSize="@dimen/textsize"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/memberDetail"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="1人"
+                        android:id="@+id/activityDetailPeopleNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@mipmap/go"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/activityDetailMember"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <!--分割线-->
+            <LinearLayout
+                android:background="@color/bgGray"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"></LinearLayout>
+
+            <TextView
+                android:text="活动介绍"
+                android:textSize="@dimen/textsize"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/activityDetailIntro"
+                android:textColor="@color/black_de"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+        <!-- 点爱心，报名 -->
+        <LinearLayout
+            android:background="@color/bgGray"
+            android:layout_gravity="bottom"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:id="@+id/activityDetailLoveNum"
+                android:background="@drawable/focus_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/love" />
+                <TextView
+                    android:id="@+id/activityDetailPraise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:tag="praise"
+                    android:textColor="@color/black_de"
+                    android:textSize="16dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/activityDetailjoin"
+                android:text="加入"
+                android:gravity="center"
+                android:tag="add"
+                android:layout_weight="3"
+                android:textColor="@color/black_de"
+                android:textSize="@dimen/textsize"
+                android:background="@drawable/join_button"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.cjj.MaterialRefreshLayout>
+</LinearLayout>

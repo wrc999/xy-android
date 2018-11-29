@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spingarr">
+        <item>联系方式</item>
+        <item>QQ</item>
+        <item>微信</item>
+        <item>手机号码</item>
+    </string-array>
+</resources>

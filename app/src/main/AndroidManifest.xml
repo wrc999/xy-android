@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="e.administrator.xy">
+
+    <!-- 读/写外部存储权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 访问相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 访问网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:theme="@style/Translucent" />
+        <activity android:name=".activity.TalkAddActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <activity android:name=".activity.ActivityAddActivity" />
+        <activity android:name=".activity.ViewListActivity" />
+        <activity android:name=".activity.userInfoActivity" />
+        <activity android:name=".activity.MyTalk" />
+        <activity android:name=".activity.MyActivity" />
+        <activity android:name=".activity.ChatRoomActivity" />
+        <activity android:name=".activity.AddFriendActivity" />
+        <activity android:name=".activity.MyFriend" />
+        <activity android:name=".activity.setting" />
+        <activity android:name=".activity.jumpAnimation" />
+        <activity android:name=".activity.changePassWord" />
+        <activity android:name=".activity.activityDetails" />
+        <activity android:name=".activity.friendInfo" />
+        <activity android:name=".activity.Search" />
+        <activity android:name=".activity.MyView" />
+        <activity android:name=".activity.clubDetails" />
+        <activity android:name=".activity.clubMember" />
+        <activity android:name=".activity.topicDetail" />
+        <activity android:name=".activity.clubAdd" />
+        <activity android:name=".activity.conversion" />
+        <activity android:name=".activity.clubActivityList" />
+        <activity android:name=".activity.systemMessage" />
+        <activity android:name=".activity.activityOnLine" />
+        <activity android:name=".activity.myClub" />
+        <activity android:name=".activity.someActivityList" />
+        <activity android:name=".activity.topicAdd" />
+        <activity android:name=".activity.ImageBrowseActivity"></activity>
+    </application>
+
+</manifest>
