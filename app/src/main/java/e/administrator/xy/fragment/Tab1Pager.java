@@ -111,7 +111,6 @@ public class Tab1Pager extends Fragment implements View.OnClickListener {
         //上拉加载
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -202,6 +201,7 @@ public class Tab1Pager extends Fragment implements View.OnClickListener {
                         thirdName.setText(hotClub.get(2).getClubName());
                         fourthName.setText(hotClub.get(3).getClubName());
                         fifthName.setText(hotClub.get(4).getClubName());
+                        clubList = new ArrayList<club>();
                         for(int k=0;k<pageSize;k++){
                             clubList.add(temp.get(k));
                         }

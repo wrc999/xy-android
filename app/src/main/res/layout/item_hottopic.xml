@@ -15,12 +15,15 @@
     <TextView
         android:padding="5dp"
         android:id="@+id/item_topicIntro"
-        android:text="sdfsdf"
+        android:singleLine="true"
+        android:maxEms="10"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <LinearLayout
         android:orientation="horizontal"
-        android:gravity="right"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
@@ -30,13 +33,8 @@
         <TextView
             android:text="11"
             android:id="@+id/item_topicJoins"
+            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <TextView
-        android:text="吴瑞成"
-        android:id="@+id/item_topicAddAccout"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -188,7 +188,7 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
         params.put("use_id",sp.getInt("use_id",0));
-        params.put("avaPath","http://p9sertmb8.bkt.clouddn.com/" + key);
+        params.put("avaPath",R.string.qiniuKey + key);
         params.put("nickName",nickName.getText().toString().trim());
         params.put("sex",sex.getText().toString().trim());
         params.put("birth",birth.getText().toString().trim());

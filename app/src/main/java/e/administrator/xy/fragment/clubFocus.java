@@ -66,7 +66,7 @@ public class clubFocus extends Fragment {
                         ClubAdapter adapter = new ClubAdapter(getContext(),clubList);
                         mRecyclerView.setAdapter(adapter);
                     }else {
-                        Toast.makeText(getContext(), "请重试", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "内容为空", Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
                     e.printStackTrace();

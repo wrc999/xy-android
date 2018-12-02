@@ -70,7 +70,7 @@ public class Search extends AppCompatActivity {
                     //搜索并显示数据
                     final AsyncHttpClient client = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
-                    params.put("topicName","每日");
+                    params.put("topicName",query);
                     client.post(constant.BASE_URL+constant.topicGet, params,new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -97,7 +97,7 @@ public class Search extends AppCompatActivity {
                     //搜索并显示数据
                     final AsyncHttpClient client = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
-                    params.put("clubName","协会");
+                    params.put("clubName",query);
                     client.post(constant.BASE_URL+constant.club_search, params,new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -127,7 +127,7 @@ public class Search extends AppCompatActivity {
                     //搜索并显示数据
                     final AsyncHttpClient client = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
-                    params.put("name","跑");
+                    params.put("name",query);
                     client.post(constant.BASE_URL+constant.activity_activitySearch, params,new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

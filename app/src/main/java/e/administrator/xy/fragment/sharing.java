@@ -127,6 +127,7 @@ public class sharing extends Fragment {
                     JsonUtil.JsonSortTopic(topicList);
                     if (!topicList.isEmpty()){
                         mRecyclerView = (RecyclerView) getActivity().findViewById(R.id.sharingHotTopic);
+                        //禁止mEecyclerView滑动，但会在滑动的时候添加惯性
                         mRecyclerView.setNestedScrollingEnabled(false);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
                         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);

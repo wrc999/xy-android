@@ -16,4 +16,6 @@
     <string name="go">登录</string>
     <string name="repeat_password">Repeat Password</string>
     <string name="next">NEXT</string>
+
+    <string name="qiniuKey">http://www.wuruicheng.top/</string>
 </resources>

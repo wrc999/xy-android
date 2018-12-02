@@ -178,7 +178,8 @@ public class ViewListActivity extends AppCompatActivity implements View.OnClickL
                 // info.error中包含了错误信息，可打印调试
                 // 上传成功后将key值上传到自己的服务器
                 if (info.isOK()) {
-                    String headpicPath = "http://www.wuruicheng.top/" + key;
+                    String qiniuKey = ViewListActivity.this.getString(R.string.qiniuKey);
+                    String headpicPath = qiniuKey + key;
                     AsyncHttpClient client = new AsyncHttpClient();
                     RequestParams params = new RequestParams();
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("data", Context.MODE_PRIVATE);

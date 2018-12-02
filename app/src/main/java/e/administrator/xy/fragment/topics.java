@@ -26,6 +26,7 @@ import e.administrator.xy.R;
 import e.administrator.xy.activity.Search;
 import e.administrator.xy.pojo.club;
 import e.administrator.xy.pojo.topic;
+import e.administrator.xy.pojo.view;
 import e.administrator.xy.util.ClubAdapter;
 import e.administrator.xy.util.JsonUtil;
 import e.administrator.xy.util.TopicAdapter;
@@ -57,7 +58,8 @@ public class topics extends Fragment {
         resource = getActivity().getIntent().getStringExtra("talkAdd");
         mRecyclerView = view.findViewById(R.id.allTopic);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView.setNestedScrollingEnabled(false);
+        //禁止mEecyclerView滑动，但会在滑动的时候添加惯性
+        //mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -131,8 +133,8 @@ public class topics extends Fragment {
                     temp = JsonUtil.getListFromJson(json, new TypeToken<List<topic>>(){}.getType());
                     //按成员数量排序
                     JsonUtil.JsonSortTopic(temp);
-                    topicList = new ArrayList<topic>();
                     if (!temp.isEmpty()){
+                        topicList = new ArrayList<topic>();
                         for(int k=0;k<pageSize;k++){
                             topicList.add(temp.get(k));
                         }
@@ -142,7 +144,7 @@ public class topics extends Fragment {
                         adapter = new TopicAdapter(getContext(), topicList,resource);
                         mRecyclerView.setAdapter(adapter);
                     }else {
-                        Toast.makeText(getContext(), "请重试1", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "内容为空", Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
                     e.printStackTrace();
@@ -150,7 +152,7 @@ public class topics extends Fragment {
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(getContext(), "请重试2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "请重试", Toast.LENGTH_SHORT).show();
             }
         });
     }

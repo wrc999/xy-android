@@ -130,10 +130,10 @@
             android:layout_height="30dp"
             android:src="@mipmap/praise"/>
     </com.nex3z.flowlayout.FlowLayout>
-    <com.nex3z.flowlayout.FlowLayout
+    <LinearLayout
         android:id="@+id/xl_Reply"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    </com.nex3z.flowlayout.FlowLayout>
+    </LinearLayout>
 </LinearLayout>

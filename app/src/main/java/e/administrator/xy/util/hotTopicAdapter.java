@@ -61,7 +61,6 @@ public class hotTopicAdapter extends RecyclerView.Adapter<hotTopicAdapter.MyView
             Glide.with(context).load(topicList.get(position).getTopicPic()).into(holder.ava);
             holder.intro.setText(topicList.get(position).getTopicIntro());
             holder.joins.setText(topicList.get(position).getTopicJoins()+"");
-            holder.account.setText(topicList.get(position).getAccount());
             holder.item_hotTopic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -79,14 +78,13 @@ public class hotTopicAdapter extends RecyclerView.Adapter<hotTopicAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private ImageView ava;
-        private TextView intro,joins,account;
+        private TextView intro,joins;
         private LinearLayout item_hotTopic;
         public MyViewHolder(View itemView) {
             super(itemView);
             ava = itemView.findViewById(R.id.item_topicAva);
             intro = itemView.findViewById(R.id.item_topicIntro);
             joins = itemView.findViewById(R.id.item_topicJoins);
-            account = itemView.findViewById(R.id.item_topicAddAccout);
             item_hotTopic = itemView.findViewById(R.id.item_hotTopic);
         }
     }

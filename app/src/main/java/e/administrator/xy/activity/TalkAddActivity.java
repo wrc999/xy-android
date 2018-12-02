@@ -200,16 +200,18 @@ public class TalkAddActivity extends AppCompatActivity implements View.OnClickLi
         SharedPreferences sp = getApplicationContext().getSharedPreferences("data", Context.MODE_PRIVATE);
         //如果用户没有选择照片则不上传图片
         if (path!=null){
+            String qiniuKey = this.getString(R.string.qiniuKey);
             UploadManager uploadManager = new UploadManager();
-            String key = "Talk/"+sdf.format(new Date());
-            String headpicPath = "http://p9sertmb8.bkt.clouddn.com/" + key;
+            String key = "talk/"+sdf.format(new Date());
+            String headpicPath = qiniuKey + key;
             params.put("talkphoto",headpicPath);
             uploadManager.put(path, key, Auth.create(constant.AccessKey, constant.SecretKey).uploadToken(constant.bucket), new UpCompletionHandler() {
                 @Override
                 public void complete(String key, ResponseInfo info, JSONObject res) {
                     // info.error中包含了错误信息，可打印调试
                     // 上传成功后将key值上传到自己的服务器
-                    if (info.isOK()) {
+                    if (!info.isOK()) {
+                        Toast.makeText(TalkAddActivity.this, "图片上传失败", Toast.LENGTH_SHORT).show();
                     }
                 }
             }, null);

@@ -290,16 +290,17 @@ public class ActivityAddActivity extends AppCompatActivity implements View.OnCli
         final RequestParams params = new RequestParams();
         //如果用户没有选择照片则不上传活动海报
         if (avaPath!=null){
+            String qiniuKey = this.getString(R.string.qiniuKey);
             UploadManager uploadManager = new UploadManager();
             String key = "activityAva/"+sdf.format(new Date());
-            params.put("ava","http://p9sertmb8.bkt.clouddn.com/" + key);
+            params.put("ava",qiniuKey + key);
             uploadManager.put(avaPath, key, Auth.create(constant.AccessKey, constant.SecretKey).uploadToken(constant.bucket), new UpCompletionHandler() {
                 @Override
                 public void complete(String key, ResponseInfo info, JSONObject res) {
                     // info.error中包含了错误信息，可打印调试
                     // 上传成功后将key值上传到自己的服务器
-                    if (info.isOK()) {
-                        String headpicavaPath = "http://p9sertmb8.bkt.clouddn.com/" + key;
+                    if (!info.isOK()) {
+                        Toast.makeText(ActivityAddActivity.this, "图片上传失败", Toast.LENGTH_SHORT).show();
                     }
                 }
             }, null);

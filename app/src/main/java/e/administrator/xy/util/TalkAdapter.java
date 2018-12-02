@@ -132,17 +132,12 @@ public class TalkAdapter extends RecyclerView.Adapter<TalkAdapter.MyViewHolder>{
             for (int i=0;i<talkList.get(position).getReplyTalkList().size();i++){
                 //todo:强制关闭复用，防止各用户之间评论控件重复
                 holder.setIsRecyclable(false);
-                LinearLayout linear = new LinearLayout(context);
-                linear.setOrientation(LinearLayout.HORIZONTAL);
+                FlowLayout linear = new FlowLayout(context);
                 TextView showView1 = new TextView(context);
-                TextView showView2 = new TextView(context);
-                TextView showView3 = new TextView(context);
-                showView1.setText(talkList.get(position).getReplyTalkList().get(i).getNickName());
-                showView2.setText(" :   ");
-                showView3.setText(talkList.get(position).getReplyTalkList().get(i).getReplycontent());
+                showView1.setText(JMessageClient.getMyInfo().getNickname()
+                        +" :   "
+                        +talkList.get(position).getReplyTalkList().get(i).getReplycontent());
                 linear.addView(showView1);
-                linear.addView(showView2);
-                linear.addView(showView3);
                 holder.xlReply.addView(linear);
             }
         }
@@ -309,17 +304,10 @@ public class TalkAdapter extends RecyclerView.Adapter<TalkAdapter.MyViewHolder>{
                                             String json = new String(responseBody,"utf-8");
                                             if (!json.isEmpty()){
                                                 holder.setIsRecyclable(false);
-                                                LinearLayout linear = new LinearLayout(context);
-                                                linear.setOrientation(LinearLayout.HORIZONTAL);
+                                                FlowLayout linear = new FlowLayout(context);
                                                 TextView showView1 = new TextView(context);
-                                                TextView showView2 = new TextView(context);
-                                                TextView showView3 = new TextView(context);
-                                                showView1.setText(JMessageClient.getMyInfo().getNickname());
-                                                showView2.setText(" :   ");
-                                                showView3.setText(replycontent);
+                                                showView1.setText(JMessageClient.getMyInfo().getNickname()+" :   "+replycontent);
                                                 linear.addView(showView1);
-                                                linear.addView(showView2);
-                                                linear.addView(showView3);
                                                 holder.xlReply.addView(linear);
                                                 Toast.makeText(context, "发布成功", Toast.LENGTH_SHORT).show();
                                             }
@@ -348,10 +336,10 @@ public class TalkAdapter extends RecyclerView.Adapter<TalkAdapter.MyViewHolder>{
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         private TextView nickName,talkTime,talkContent,school,sharing_topicName;
-        private LinearLayout sharing_topic;
+        private LinearLayout sharing_topic,xlReply;
         private ImageView praise,reply,user_pic,talkDelete;
         private ImageView talkPhoto;
-        private FlowLayout xlPraise,xlReply;
+        private FlowLayout xlPraise;
         public MyViewHolder(View itemView) {
             super(itemView);
             nickName = (TextView) itemView.findViewById(R.id.nickName);
@@ -363,7 +351,7 @@ public class TalkAdapter extends RecyclerView.Adapter<TalkAdapter.MyViewHolder>{
             praise = (ImageView) itemView.findViewById(R.id.praise);
             reply = (ImageView) itemView.findViewById(R.id.reply);
             talkDelete = (ImageView) itemView.findViewById(R.id.talkDelete);
-            xlReply = (FlowLayout) itemView.findViewById(R.id.xl_Reply);
+            xlReply = itemView.findViewById(R.id.xl_Reply);
             xlPraise = (FlowLayout) itemView.findViewById(R.id.xl_praise);
             sharing_topicName = itemView.findViewById(R.id.sharing_topicName);
             sharing_topic = itemView.findViewById(R.id.sharing_topic);
