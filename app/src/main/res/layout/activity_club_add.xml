@@ -63,6 +63,7 @@
                 android:id="@+id/clubAddLinearAva"
                 android:orientation="horizontal"
                 android:padding="10dp"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.makeramen.roundedimageview.RoundedImageView
@@ -97,8 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="6dp"/>
             <LinearLayout
-                android:layout_margin="10dp"
-                android:background="@drawable/underline"
+                android:padding="10dp"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
@@ -119,8 +120,8 @@
 
 
             <LinearLayout
-                android:layout_margin="10dp"
-                android:background="@drawable/underline"
+                android:padding="10dp"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView

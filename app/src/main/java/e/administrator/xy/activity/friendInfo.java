@@ -120,7 +120,7 @@ public class friendInfo extends AppCompatActivity {
                 @Override
                 public void gotResult(int i, String s, GroupInfo groupInfo) {
                     String account = getSharedPreferences("data",MODE_PRIVATE).getString("account",null);
-                    if (groupInfo.getGroupOwner().equals(account)){
+                    if (groupInfo.getGroupOwner().equals(account) && !userName.equals(account)){
                         quitMember.setVisibility(View.VISIBLE);
                     }
                 }
@@ -129,13 +129,18 @@ public class friendInfo extends AppCompatActivity {
     }
 
     public void sendMessage(View view) {
-        Intent intent = new Intent(friendInfo.this, ChatRoomActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("nickName", nickName.getText().toString());
-        bundle.putString("userName", userName);
-        intent.putExtra("type", "single");
-        intent.putExtras(bundle);
-        startActivity(intent);
+        String localAccount = getSharedPreferences("data",MODE_PRIVATE).getString("account",null);
+        if (localAccount.equals(userName)){
+            Toast.makeText(this, "不能给自己发送信息噢", Toast.LENGTH_SHORT).show();
+        }else {
+            Intent intent = new Intent(friendInfo.this, ChatRoomActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("nickName", nickName.getText().toString());
+            bundle.putString("userName", userName);
+            intent.putExtra("type", "single");
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 
     public void deleteFriend(View view) {
