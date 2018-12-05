@@ -219,7 +219,7 @@ public class clubAdd extends AppCompatActivity implements View.OnClickListener, 
         if (avaPath!=null){
             UploadManager uploadManager = new UploadManager();
             String qiniuKey = this.getString(R.string.qiniuKey);
-            String key = "activityAva/"+sdf.format(new Date());
+            String key = "clubAva/"+sdf.format(new Date());
             params.put("clubAva",qiniuKey + key);
             uploadManager.put(avaPath, key, Auth.create(constant.AccessKey, constant.SecretKey).uploadToken(constant.bucket), new UpCompletionHandler() {
                 @Override

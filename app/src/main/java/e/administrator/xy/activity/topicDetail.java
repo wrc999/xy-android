@@ -89,7 +89,7 @@ public class topicDetail extends AppCompatActivity {
                         });
                         mRecyclerView.setAdapter(adapter);
                     }else {
-                        Toast.makeText(topicDetail.this, "请重试", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(topicDetail.this, "话题暂未有人参与讨论", Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
                     e.printStackTrace();
