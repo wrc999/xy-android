@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/go_back"
+            android:src="@mipmap/whitereturn"
             android:layout_centerVertical="true"/>
         <TextView
             android:id="@+id/tv_go_back"

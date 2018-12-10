@@ -172,6 +172,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTab4 = new Tab4Pager();
         mTabbar.setGradientEnable(true);
         mTabbar.setPageAnimateEnable(true);
+        SharedPreferences sp = getApplicationContext().getSharedPreferences("settig", Context.MODE_PRIVATE);
+        String aimation = sp.getString("aimation", String.valueOf(AnimationType.SCALE2));
+        AnimationType animationType =  AnimationType.valueOf(aimation);
+        mTabbar.setAnimation(animationType);
         list.add(mTab1);
         list.add(mTab2);
         list.add(mTab3);
@@ -187,7 +191,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return mTabbar;
     }
 
-    String school;
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

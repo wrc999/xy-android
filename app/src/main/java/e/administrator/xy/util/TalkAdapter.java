@@ -89,7 +89,11 @@ public class TalkAdapter extends RecyclerView.Adapter<TalkAdapter.MyViewHolder>{
         holder.school.setText(talkList.get(position).getSchool());
         //当用户上传了照片时，则显示，否则隐藏图片控件
         if (talkList.get(position).getTalkphoto()!=null){
-            Glide.with(context).load(talkList.get(position).getTalkphoto()).dontAnimate().placeholder(R.mipmap.loading).into(holder.talkPhoto);
+            Glide.with(context).load(talkList.get(position)
+                    .getTalkphoto())
+                    .override(150,250)
+                    .dontAnimate()
+                    .into(holder.talkPhoto);
         }else {
             holder.talkPhoto.setVisibility(View.GONE);
         }

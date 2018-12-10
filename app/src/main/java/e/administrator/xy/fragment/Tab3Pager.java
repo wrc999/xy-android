@@ -70,7 +70,6 @@ public class Tab3Pager extends Fragment implements View.OnClickListener {
     private void initViews(View layout) {
         mRecyclerView = layout.findViewById(R.id.tab3_underLineActivityList);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

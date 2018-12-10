@@ -266,6 +266,7 @@ public class Tab1Pager extends Fragment implements View.OnClickListener {
     }
 
     private void initBanner() {
+        bannerImgList = new ArrayList<Integer>();
         bannerImgList.add(R.mipmap.middle1);
         bannerImgList.add(R.mipmap.middle2);
         bannerImgList.add(R.mipmap.middle3);

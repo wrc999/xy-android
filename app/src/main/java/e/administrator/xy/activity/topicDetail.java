@@ -79,7 +79,7 @@ public class topicDetail extends AppCompatActivity {
                     String json = new String(responseBody,"utf-8");
                     List<Talk> talkList = JsonUtil.getListFromJson(json, new TypeToken<List<Talk>>(){}.getType());
                     if (!talkList.isEmpty()){
-                        mRecyclerView.addItemDecoration(new RecycleViewDivider(topicDetail.this, LinearLayoutManager.HORIZONTAL,10,getResources().getColor((R.color.blue))));
+                        mRecyclerView.addItemDecoration(new RecycleViewDivider(topicDetail.this, LinearLayoutManager.HORIZONTAL,5,getResources().getColor((R.color.blue))));
                         TalkAdapter adapter = new TalkAdapter(topicDetail.this, JsonUtil.JsonSortTalk(talkList));
                         adapter.setOnRefreshListener(new TalkAdapter.Inter() {
                             @Override

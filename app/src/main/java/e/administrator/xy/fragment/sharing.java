@@ -92,7 +92,7 @@ public class sharing extends Fragment {
                             mRecyclerView = (RecyclerView) getActivity().findViewById(R.id.recycler_xl);
                             mRecyclerView.setNestedScrollingEnabled(false);
                             mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                            mRecyclerView.addItemDecoration(new RecycleViewDivider(getContext(), LinearLayoutManager.HORIZONTAL,10,getResources().getColor((R.color.blue))));
+                            mRecyclerView.addItemDecoration(new RecycleViewDivider(getContext(), LinearLayoutManager.HORIZONTAL,5,getResources().getColor((R.color.blue))));
                             TalkAdapter adapter = new TalkAdapter(getContext(), JsonUtil.JsonSortTalk(talkList));
                             adapter.setOnRefreshListener(new TalkAdapter.Inter() {
                                 @Override
@@ -158,6 +158,7 @@ public class sharing extends Fragment {
                     try {
                         activityList = JsonUtil.getListFromJson(json, new TypeToken<List<activity>>() {}.getType());
                         JsonUtil.JsonSortHotActivity(activityList);
+                        bannerImgList = new ArrayList<String>();
                         bannerImgList.add(activityList.get(0).getAva());
                         bannerImgList.add(activityList.get(1).getAva());
                         bannerImgList.add(activityList.get(2).getAva());

@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/abc_popup_background_mtrl_mult"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,20 +61,18 @@
 
         <ImageView
             android:id="@+id/talkPhoto"
-            android:layout_width="200dp"
-            android:layout_height="300dp"
-            android:layout_below="@+id/talkContent"
-            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:src="@mipmap/praise" />
+            android:layout_below="@+id/talkContent"
+            android:layout_marginTop="10dp" />
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="10dp">
+        android:paddingTop="5dp">
         <TextView
             android:id="@+id/school"
             android:textSize="@dimen/textsize"

@@ -1,8 +1,10 @@
 package e.administrator.xy.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,6 +31,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.callback.GetGroupInfoCallback;
+import cn.jpush.im.android.api.callback.GetUserInfoCallback;
+import cn.jpush.im.android.api.model.GroupInfo;
+import cn.jpush.im.android.api.model.UserInfo;
+import cn.jpush.im.api.BasicCallback;
 import cz.msebera.android.httpclient.Header;
 import e.administrator.xy.R;
 import e.administrator.xy.pojo.club;
@@ -279,7 +286,7 @@ public class clubDetails extends AppCompatActivity implements View.OnClickListen
                 //申请加入
                 case R.id.clubDetailJoin:
                     //判断是否加入
-                    SharedPreferences sp1 = getSharedPreferences("data",MODE_PRIVATE);
+                    final SharedPreferences sp1 = getSharedPreferences("data",MODE_PRIVATE);
                     if (clubDetailJoin.getTag().equals("join")){
                         AsyncHttpClient client1 = new AsyncHttpClient();
                         RequestParams params1 = new RequestParams();
@@ -307,31 +314,50 @@ public class clubDetails extends AppCompatActivity implements View.OnClickListen
                             }
                         });
                     }else {
-                        AsyncHttpClient client1 = new AsyncHttpClient();
-                        RequestParams params1 = new RequestParams();
-                        params1.put("account",sp1.getString("account",null));
-                        params1.put("club_id",club_id);
-                        client1.post(constant.BASE_URL + constant.club_quit,params1, new AsyncHttpResponseHandler() {
+                        JMessageClient.getGroupInfo(Long.parseLong(c.getGroupId()), new GetGroupInfoCallback() {
                             @Override
-                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                try {
-                                    String json = new String(responseBody,"utf-8");
-                                    if (json!=null){
-                                        clubDetailJoin.setText("申请加入");
-                                        clubDetailJoin.setTag("join");
-                                        clubDetailJoin.setBackgroundResource(R.drawable.join_button);
-                                        Toast.makeText(clubDetails.this, "退出成功", Toast.LENGTH_SHORT).show();
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
+                            public void gotResult(int i, String s, GroupInfo groupInfo) {
+                                if (groupInfo.getGroupOwner().equals(sp1.getString("account",null))){
+                                    Toast.makeText(clubDetails.this, "您必须转让会长后才能退出", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(clubDetails.this);
+                                    builder.setTitle("是否退出？").setIcon(
+                                            R.mipmap.logo).setNegativeButton("否", null);
+                                    builder.setPositiveButton("是",
+                                            new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    AsyncHttpClient client1 = new AsyncHttpClient();
+                                                    RequestParams params1 = new RequestParams();
+                                                    params1.put("account",sp1.getString("account",null));
+                                                    params1.put("club_id",club_id);
+                                                    client1.post(constant.BASE_URL + constant.club_quit,params1, new AsyncHttpResponseHandler() {
+                                                        @Override
+                                                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                                            try {
+                                                                String json = new String(responseBody,"utf-8");
+                                                                if (json!=null){
+                                                                    clubDetailJoin.setText("申请加入");
+                                                                    clubDetailJoin.setTag("join");
+                                                                    clubDetailJoin.setBackgroundResource(R.drawable.join_button);
+                                                                    Toast.makeText(clubDetails.this, "退出成功", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            } catch (Exception e) {
+                                                                e.printStackTrace();
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                                            Toast.makeText(getApplicationContext(), "请刷新重试", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                    builder.show();
                                 }
                             }
-
-                            @Override
-                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                                Toast.makeText(getApplicationContext(), "请刷新重试", Toast.LENGTH_SHORT).show();
-                            }
                         });
+
                     }
 
                     break;
