@@ -124,7 +124,7 @@ public class activityDetails extends AppCompatActivity implements View.OnClickLi
                     SharedPreferences sp = getSharedPreferences("data", Context.MODE_PRIVATE);
                     initBanner();
                     name.setText(a.getName());;
-                    time.setText(a.getStarttime()+"--"+a.getEndtime());
+                    time.setText(a.getStarttime().replace("-", ".")+"--"+a.getEndtime().replace("-", "."));
                     praiseNum.setText(a.getaAccount().size()+"");
                     //如果为线上，则隐藏地点，否则显示
                     if (getIntent().getIntExtra("onLine",-1)==1){
@@ -165,9 +165,22 @@ public class activityDetails extends AppCompatActivity implements View.OnClickLi
                         GradientDrawable drawable=new GradientDrawable();
                         drawable.setCornerRadius(30);
                         switch (keyword[i]){
+                            case "创意":drawable.setColor(Color.rgb(138,76,75));break;
+                            case "晚会":drawable.setColor(Color.rgb(118,244,148));break;
+                            case "比赛":drawable.setColor(Color.rgb(214,240,237));break;
+                            case "公益":drawable.setColor(Color.rgb(250,246,79));break;
                             case "运动":drawable.setColor(Color.rgb(50,205,50));break;
-                            case "娱乐":drawable.setColor(Color.rgb(64,224,208));break;
+                            case "摄影":drawable.setColor(Color.rgb(175,81,195));break;
+                            case "旅游":drawable.setColor(Color.rgb(89,106,159));break;
+                            case "电影":drawable.setColor(Color.rgb(183,96,138));break;
+                            case "创业":drawable.setColor(Color.rgb(55,204,151));break;
+                            case "职场":drawable.setColor(Color.rgb(185,169,220));break;
+                            case "讲座":drawable.setColor(Color.rgb(141,217,118));break;
+                            case "沙龙":drawable.setColor(Color.rgb(229,150,180));break;
                             case "日常运动":drawable.setColor(Color.rgb(255,100,97));break;
+                            case "娱乐":drawable.setColor(Color.rgb(64,224,208));break;
+                            case "演唱会":drawable.setColor(Color.rgb(96,173,122));break;
+                            case "其他":drawable.setColor(Color.rgb(61,58,80));break;
                         }
                         badge.setBackground(drawable);
                         activityDetailKeyWord.addView(badge);
@@ -340,7 +353,7 @@ public class activityDetails extends AppCompatActivity implements View.OnClickLi
                                 String json = new String(responseBody,"utf-8");
                                 if (!json.isEmpty()){
                                     praiseNum.setTag("unpraise");
-                                    praiseNum.setText(a.getaAccount().size()+1+"");
+                                    praiseNum.setText(json);
                                     Toast.makeText(activityDetails.this, "点赞成功", Toast.LENGTH_SHORT).show();
                                 }else {
                                     Toast.makeText(activityDetails.this, "点赞失败", Toast.LENGTH_SHORT).show();
@@ -367,7 +380,7 @@ public class activityDetails extends AppCompatActivity implements View.OnClickLi
                                 String json = new String(responseBody,"utf-8");
                                 if (!json.isEmpty()){
                                     praiseNum.setTag("praise");
-                                    praiseNum.setText(a.getaAccount().size()-1+"");
+                                    praiseNum.setText(json);
                                     Toast.makeText(activityDetails.this, "取消点赞", Toast.LENGTH_SHORT).show();
                                 }else {
                                     Toast.makeText(activityDetails.this, "取消失败", Toast.LENGTH_SHORT).show();

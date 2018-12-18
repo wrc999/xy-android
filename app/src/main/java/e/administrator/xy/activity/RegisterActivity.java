@@ -57,9 +57,6 @@ public class RegisterActivity extends AppCompatActivity{
         password = (EditText) findViewById(R.id.register_password);
         password1 = (EditText) findViewById(R.id.register_password1);
         btnRegister = (Button) findViewById(R.id.bt_register);
-        userName = username.getText().toString();
-        passWord = password.getText().toString();
-        passWord1 = password1.getText().toString();
         fab = findViewById(R.id.fab);
         cvAdd = findViewById(R.id.cv_add);
         validate();
@@ -68,63 +65,71 @@ public class RegisterActivity extends AppCompatActivity{
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.length()<1){
+                userName = username.getText().toString();
+                passWord = password.getText().toString();
+                passWord1 = password1.getText().toString();
+                if (userName.length()<1){
                     Toast.makeText(RegisterActivity.this, "请输入账号", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (password.length()<1){
+                if (passWord.length()<1){
                     Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (!password.equals(password1)) {
-                    Toast.makeText(RegisterActivity.this, "两次密码不一致，请重新输入", Toast.LENGTH_SHORT).show();
-                } else {
-                    mProgressDialog = ProgressDialog.show(RegisterActivity.this, "提示：", "正在加载中。。。");
-                    mProgressDialog.setCanceledOnTouchOutside(true);
-                    AsyncHttpClient client = new AsyncHttpClient();
-                    RequestParams params = new RequestParams();
-                    params.put("account", userName);
-                    params.put("passWord", password);
-                    client.post(constant.BASE_URL + constant.user_add, params, new AsyncHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                            try {
-                                String json = new String(responseBody, "utf-8");
-                                if (Integer.valueOf(json) > 0) {
-
-                                    /**=================     调用SDK注册接口    =================*/
-                                    JMessageClient.register(userName, passWord, new BasicCallback() {
-                                        @Override
-                                        public void gotResult(int responseCode, String registerDesc) {
-                                            if (responseCode == 0) {
-                                                mProgressDialog.dismiss();
-                                                LoginActivity.account.setText(userName);
-                                                LoginActivity.passWord.setText(passWord);
-                                                Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                                startActivity(intent);
-                                                finish();
-                                            } else {
-                                                mProgressDialog.dismiss();
-                                                Toast.makeText(getApplicationContext(), "注册失败", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
-                                } else {
-                                    Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-
-                        @Override
-                        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                            Toast.makeText(RegisterActivity.this, "请刷新重试", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                if (passWord.length()!=6){
+                    Toast.makeText(RegisterActivity.this, "请输入六位密码", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+                if (!passWord.equals(passWord1)) {
+                    Toast.makeText(RegisterActivity.this, "两次密码不一致，请重新输入", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                mProgressDialog = ProgressDialog.show(RegisterActivity.this, "提示：", "正在加载中。。。");
+                mProgressDialog.setCanceledOnTouchOutside(true);
+                AsyncHttpClient client = new AsyncHttpClient();
+                RequestParams params = new RequestParams();
+                params.put("account", userName);
+                params.put("passWord", passWord);
+                client.post(constant.BASE_URL + constant.user_add, params, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        try {
+                            String json = new String(responseBody, "utf-8");
+                            if (Integer.valueOf(json) > 0) {
+
+                                /**=================     调用SDK注册接口    =================*/
+                                JMessageClient.register(userName, passWord, new BasicCallback() {
+                                    @Override
+                                    public void gotResult(int responseCode, String registerDesc) {
+                                        if (responseCode == 0) {
+                                            mProgressDialog.dismiss();
+                                            LoginActivity.account.setText(userName);
+                                            LoginActivity.passWord.setText(passWord);
+                                            Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            mProgressDialog.dismiss();
+                                            Toast.makeText(getApplicationContext(), "注册失败", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            } else {
+                                Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        Toast.makeText(RegisterActivity.this, "请刷新重试", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {

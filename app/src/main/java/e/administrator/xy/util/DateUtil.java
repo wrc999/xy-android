@@ -44,7 +44,8 @@ public class DateUtil {
         int nowYear = Integer.parseInt(time.substring(0,4));
         int nowMonth = Integer.parseInt(time.substring(5,7));
         int nowDay = Integer.parseInt(time.substring(8,10));
-        String[] str = date.split("\\.");
+//        String[] str = date.split("\\.");
+        String[] str = date.split("-");
         int year = Integer.parseInt(str[0]);
         int month = Integer.parseInt(str[1]);
         int day = Integer.parseInt(str[2]);

@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -138,7 +140,7 @@ public class TalkAdapter extends RecyclerView.Adapter<TalkAdapter.MyViewHolder>{
                 holder.setIsRecyclable(false);
                 FlowLayout linear = new FlowLayout(context);
                 TextView showView1 = new TextView(context);
-                showView1.setText(JMessageClient.getMyInfo().getNickname()
+                showView1.setText(talkList.get(position).getReplyTalkList().get(i).getNickName()
                         +" :   "
                         +talkList.get(position).getReplyTalkList().get(i).getReplycontent());
                 linear.addView(showView1);
@@ -151,12 +153,16 @@ public class TalkAdapter extends RecyclerView.Adapter<TalkAdapter.MyViewHolder>{
                 //todo:强制关闭复用，防止各用户之间点赞控件重复
                 holder.setIsRecyclable(false);
                 TextView showView1 = new TextView(context);
+                showView1.setGravity(Gravity.CENTER_VERTICAL);
+                showView1.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 showView1.setId(talkList.get(position).getPraiseList().get(i).getPraise_id());
                 showView1.setText(talkList.get(position).getPraiseList().get(i).getNickName()+"、");
                 //如果分享中的点赞名单与登录用户的昵称相同，则更改点赞颜色
                 if (talkList.get(position).getPraiseList().get(i).getNickName().equals(sp.getString("nickName",null))){
                     holder.praise.setImageResource(R.mipmap.likes);
                 }
+                RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                lp.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);//居中显示。
                 holder.xlPraise.addView(showView1);
                 holder.xlPraise.setVisibility(View.VISIBLE);
             }
@@ -260,6 +266,8 @@ public class TalkAdapter extends RecyclerView.Adapter<TalkAdapter.MyViewHolder>{
                                     holder.praise.setImageResource(R.mipmap.likes);
                                     holder.setIsRecyclable(false);
                                     TextView showView1 = new TextView(context);
+                                    showView1.setGravity(Gravity.CENTER_VERTICAL);
+                                    showView1.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
                                     showView1.setId(Integer.parseInt(json));
                                     showView1.setText(JMessageClient.getMyInfo().getNickname()+"、");
                                     holder.xlPraise.addView(showView1);

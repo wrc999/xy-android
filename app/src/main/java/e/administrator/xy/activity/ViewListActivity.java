@@ -162,6 +162,7 @@ public class ViewListActivity extends AppCompatActivity implements View.OnClickL
                     addView(path,i);
                 }
                 initView();
+                Toast.makeText(this, "成功上传"+mSelected.size()+"张照片", Toast.LENGTH_SHORT).show();
             }catch (Exception e) {
                 e.printStackTrace();
             }

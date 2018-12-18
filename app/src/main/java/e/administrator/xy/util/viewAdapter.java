@@ -64,7 +64,7 @@ public class viewAdapter extends RecyclerView.Adapter<viewAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(viewAdapter.MyViewHolder holder, final int position) {
-        Glide.with(context).load(viewList.get(position)).into(holder.view);
+        Glide.with(context).load(viewList.get(position)).placeholder(R.mipmap.loading).into(holder.view);
         //todo:单击放大查看(根据原图自适应宽高)
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

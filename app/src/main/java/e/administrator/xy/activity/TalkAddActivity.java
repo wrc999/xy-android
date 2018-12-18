@@ -226,8 +226,9 @@ public class TalkAddActivity extends AppCompatActivity implements View.OnClickLi
                     String json = new String(responseBody,"utf-8");
                     if (!json.isEmpty()){
                         Intent intent = new Intent(TalkAddActivity.this,MainActivity.class);
-                        intent.putExtra("id",22);
+                        intent.putExtra("id",21);
                         startActivity(intent);
+                        Toast.makeText(TalkAddActivity.this, "发布成功", Toast.LENGTH_SHORT).show();
                         TalkAddActivity.this.finish();
                     }else {
                         Toast.makeText(TalkAddActivity.this, "发布失败，请重试", Toast.LENGTH_SHORT).show();

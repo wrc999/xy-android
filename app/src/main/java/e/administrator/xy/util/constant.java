@@ -9,8 +9,8 @@ public class constant {
     public static final String SecretKey = "dw74d1cWt56_TxXg4ZcC6JfbR1gPFV-f98sCTgim";//此处填你自己的SecretKey
     public static final String bucket = "wrc999";//七牛中的存储控件
 
-    public static final String BASE_URL1 = "http://192.168.208.1/xy/";//本地ip地址
-    public static final String BASE_URL = "http://101.132.192.120/xy/";//阿里云服务器地址
+    public static final String BASE_URL = "http://192.168.208.1/xy/";//本地ip地址
+    public static final String BASE_URL1 = "http://101.132.192.120/xy/";//阿里云服务器地址
 
     public static final String user_login = "user/login";//登录接口
     public static final String user_add = "user/add";//用户添加接口
