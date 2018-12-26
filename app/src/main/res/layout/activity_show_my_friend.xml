@@ -10,6 +10,7 @@
         android:background="#5da8f9">
     <RelativeLayout
         android:id="@+id/returnYj"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="返回"
             android:textSize="@dimen/textsize"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="20dp"
             android:layout_centerVertical="true"
             android:textColor="@color/white" />
     </RelativeLayout>
@@ -35,13 +36,21 @@
             android:layout_centerVertical="true"
             android:textColor="@color/white" />
     </RelativeLayout>
+    <TextView
+        android:text="您还没有好友噢"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:id="@+id/noFriend"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_my_friend"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent"/>
         <e.administrator.xy.util.SideBar
             android:id="@+id/side_bar"
             android:layout_width="match_parent"

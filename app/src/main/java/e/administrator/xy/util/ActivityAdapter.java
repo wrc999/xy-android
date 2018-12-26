@@ -121,7 +121,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     case "日常运动":drawable.setColor(Color.rgb(255,100,97));break;
                     case "娱乐":drawable.setColor(Color.rgb(64,224,208));break;
                     case "演唱会":drawable.setColor(Color.rgb(96,173,122));break;
-                    case "其他":drawable.setColor(Color.rgb(61,58,80));break;
+                    case "其他":drawable.setColor(Color.rgb(205,200,181));break;
                 }
                 badge.setBackground(drawable);
                 myViewHolder.item_keyWord.addView(badge);

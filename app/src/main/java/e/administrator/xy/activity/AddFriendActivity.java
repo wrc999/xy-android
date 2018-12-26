@@ -84,11 +84,16 @@ public class AddFriendActivity extends AppCompatActivity {
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+                            return;
                         }
-                        if (s.equals("already is friend")){
-                            Toast.makeText(getApplicationContext(), "TA已经是你的好友了，请勿重复添加", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(getApplicationContext(), "该用户不存在，请核实该账号是否正确", Toast.LENGTH_SHORT).show();
+                        switch (s){
+                            case "Target user cannot be yourself.":
+                                Toast.makeText(getApplicationContext(), "您不能添加自己为好友噢", Toast.LENGTH_SHORT).show();
+                                break;
+                            case "already is friend":
+                                Toast.makeText(getApplicationContext(), "TA已经是你的好友了，请勿重复添加", Toast.LENGTH_SHORT).show();
+                                break;
+                            default:Toast.makeText(getApplicationContext(), "该用户不存在，请核实该账号是否正确", Toast.LENGTH_SHORT).show();break;
                         }
                     }
                 });

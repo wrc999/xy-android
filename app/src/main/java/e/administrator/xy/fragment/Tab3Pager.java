@@ -20,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.cjj.MaterialRefreshLayout;
+import com.cjj.MaterialRefreshListener;
 import com.google.gson.reflect.TypeToken;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -36,6 +38,7 @@ import e.administrator.xy.activity.activityDetails;
 import e.administrator.xy.activity.activityOnLine;
 import e.administrator.xy.activity.someActivityList;
 import e.administrator.xy.pojo.activity;
+import e.administrator.xy.pojo.club;
 import e.administrator.xy.util.ActivityAdapter;
 import e.administrator.xy.util.DateUtil;
 import e.administrator.xy.util.JsonUtil;
@@ -45,6 +48,7 @@ import e.administrator.xy.util.constant;
 public class Tab3Pager extends Fragment implements View.OnClickListener {
 
     private RecyclerView mRecyclerView;
+    private MaterialRefreshLayout refreshLayout;    // 下拉刷新控件
     private List<activity> activityList = new ArrayList<activity>(),
             temp = new ArrayList<activity>(),underLineList = new ArrayList<activity>();
     private LinearLayout search;
@@ -64,11 +68,13 @@ public class Tab3Pager extends Fragment implements View.OnClickListener {
         View layout = inflater.inflate(R.layout.tab3,null);
         initViews(layout);
         initData();
+        initRefreshLayout();
         return layout;
     }
 
     private void initViews(View layout) {
         mRecyclerView = layout.findViewById(R.id.tab3_underLineActivityList);
+        refreshLayout = layout.findViewById(R.id.refresh_tab3);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -305,5 +311,20 @@ public class Tab3Pager extends Fragment implements View.OnClickListener {
                 startActivity(intent3);
                 break;
         }
+    }
+    private void initRefreshLayout() {
+        // 注册下拉刷新监听器
+        refreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+            // 下拉刷新执行的方法
+            @Override
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                activityList = new ArrayList<activity>();
+                temp = new ArrayList<activity>();
+                underLineList = new ArrayList<activity>();
+                initData(); // 重新加载数据
+                refreshLayout.finishRefresh();
+                Toast.makeText(getContext(), "成功刷新", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -33,6 +34,7 @@ import e.administrator.xy.view.RecycleViewDivider;
 public class MyFriend extends AppCompatActivity {
     private RecyclerView rvShowMyFriend;
     private SideBar sideBar;
+    private TextView noFriend;
     private RelativeLayout returnYj;
     private ArrayList<User> UserList = new ArrayList<>();
 
@@ -45,6 +47,7 @@ public class MyFriend extends AppCompatActivity {
     }
 
     private void initView() {
+        noFriend = findViewById(R.id.noFriend);
         returnYj = findViewById(R.id.returnYj);
         returnYj.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +81,7 @@ public class MyFriend extends AppCompatActivity {
         ContactManager.getFriendList(new GetUserInfoListCallback() {
             @Override
             public void gotResult(int i, String s, final List<UserInfo> list) {
-                if (i == 0){
+                if (list.size()>0){
                     for (UserInfo u:list){
                         UserList.add(new User(u.getNickname(),u.getUserName(),u.getAvatarFile()));
                     }
@@ -101,7 +104,7 @@ public class MyFriend extends AppCompatActivity {
                         }
                     });
                 }else {
-                    Toast.makeText(MyFriend.this, "获取失败", Toast.LENGTH_SHORT).show();
+                    noFriend.setVisibility(View.VISIBLE);
                 }
             }
         });

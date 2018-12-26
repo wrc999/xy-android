@@ -1,6 +1,7 @@
 package e.administrator.xy.activity;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,12 +54,16 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class userInfoActivity extends AppCompatActivity implements View.OnClickListener {
+    private ProgressDialog mProgressDialog = null;
     private ImageView userPic;
-    private EditText nickName,sex,school,academy,major,hobby,perSign,homeTown;
+    private EditText nickName,school,academy,major,hobby,perSign,homeTown;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
     private TextView birth,entryYear;
     private TextView save;
     private RelativeLayout returnYj;
     private static final int GALLERY_ACTIVITY_CODE = 9;
+    String sex;
     String path = null;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
     UploadManager uploadManager = new UploadManager();
@@ -84,11 +91,18 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
 
     //获得界面控件
     private void init() {
+        radioGroup = findViewById(R.id.userInfoSex);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                radioButton = (RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
+                sex = radioButton.getText().toString().trim();
+            }
+        });
         SharedPreferences sp = userInfoActivity.this.getSharedPreferences("data", Context.MODE_PRIVATE);
         path = sp.getString("avaPath",null);
         userPic = findViewById(R.id.iv_userPic);
         nickName = findViewById(R.id.et_nickName);
-        sex = findViewById(R.id.et_sex);
         school = findViewById(R.id.et_school);
         academy = findViewById(R.id.et_academy);
         major = findViewById(R.id.et_major);
@@ -132,7 +146,10 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
             Glide.with(this).load(R.mipmap.activity_people).into(userPic);
         }
         nickName.setText(sp.getString("nickName",null)) ;
-        sex.setText(sp.getString("sex",null));
+        String sex1 = sp.getString("sex","隐藏");
+        if (sex1.equals("隐藏")){radioGroup.check(R.id.none);}
+        if (sex1.equals("男")){radioGroup.check(R.id.man);}
+        if (sex1.equals("女")){radioGroup.check(R.id.woman);}
         school.setText(sp.getString("school",null));
         academy.setText(sp.getString("academy",null));
         major.setText(sp.getString("major",null));
@@ -165,9 +182,6 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
             //保存修改信息
             case R.id.tv_save_data:
                 saveInfo();
-                Intent intent0 = new Intent(this,MainActivity.class);
-                intent0.putExtra("id",4);
-                startActivity(intent0);
                 break;
             //返回上一界面
             case R.id.tv_go_back:
@@ -183,6 +197,8 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
 
     //用户信息保存函数
     private void saveInfo() {
+        mProgressDialog = ProgressDialog.show(userInfoActivity.this, "提示：", "正在加载中。。。");
+        mProgressDialog.setCanceledOnTouchOutside(true);
         //将用户信息备份到数据库中去
         SharedPreferences sp = userInfoActivity.this.getSharedPreferences("data", Context.MODE_PRIVATE);
         AsyncHttpClient client = new AsyncHttpClient();
@@ -190,7 +206,7 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
         params.put("use_id",sp.getInt("use_id",0));
         params.put("avaPath",R.string.qiniuKey + key);
         params.put("nickName",nickName.getText().toString().trim());
-        params.put("sex",sex.getText().toString().trim());
+        params.put("sex",sex);
         params.put("birth",birth.getText().toString().trim());
         params.put("school",school.getText().toString().trim());
         params.put("academy",academy.getText().toString().trim());
@@ -230,6 +246,7 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(userInfoActivity.this, "数据异常，请重试", Toast.LENGTH_SHORT).show();
             }
 });
 
@@ -237,7 +254,7 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
         UserInfo userInfo = JMessageClient.getMyInfo();
         userInfo.setNickname(nickName.getText().toString().trim());
         userInfo.setUserExtras("birth",birth.getText().toString().trim());
-        userInfo.setUserExtras("sex",sex.getText().toString().trim());
+        userInfo.setUserExtras("sex",sex);
         userInfo.setUserExtras("school",school.getText().toString().trim());
         userInfo.setUserExtras("academy",academy.getText().toString().trim());
         userInfo.setUserExtras("major",major.getText().toString().trim());
@@ -253,6 +270,10 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
         JMessageClient.updateMyInfo(UserInfo.Field.nickname, userInfo, new BasicCallback() {
             @Override
             public void gotResult(int responseCode, String responseMessage) {
+                mProgressDialog.dismiss();
+                Intent intent0 = new Intent(userInfoActivity.this,MainActivity.class);
+                intent0.putExtra("id",4);
+                startActivity(intent0);
             }
         });
         //将头像存储到极光后台中
@@ -261,16 +282,11 @@ public class userInfoActivity extends AppCompatActivity implements View.OnClickL
                 @Override
                 public void gotResult(int responseCode, String responseMessage) {
                     if (responseCode == 0){
-                        Toast.makeText(userInfoActivity.this, "保存成功", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(userInfoActivity.this, MainActivity.class);
-                        intent.putExtra("id", 4);
-                        startActivity(intent);
-                        userInfoActivity.this.finish();
+                        Toast.makeText(userInfoActivity.this, "头像保存成功", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
-        Toast.makeText(this, "资料修改成功", Toast.LENGTH_SHORT).show();
     }
 
     @Override

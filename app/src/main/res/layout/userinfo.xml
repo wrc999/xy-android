@@ -160,15 +160,51 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
                     />
-                <EditText
-                    android:id="@+id/et_sex"
-                    android:textSize="@dimen/textsize"
+                <!--<EditText-->
+                    <!--android:id="@+id/et_sex"-->
+                    <!--android:textSize="@dimen/textsize"-->
+                    <!--android:layout_toRightOf="@+id/tv_sex"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@null"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginLeft="20dp"/>-->
+                <RadioGroup
+                    android:id="@+id/userInfoSex"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
                     android:layout_toRightOf="@+id/tv_sex"
+                    android:background="@drawable/underline"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"/>
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:text="隐藏"
+                        android:id="@+id/none"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/textsize"
+                        android:textColor="@drawable/radiobutton_textcolor"
+                        android:buttonTint="@drawable/radiobutton_textcolor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:text="男"
+                        android:id="@+id/man"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/textsize"
+                        android:textColor="@drawable/radiobutton_textcolor"
+                        android:buttonTint="@drawable/radiobutton_textcolor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RadioButton
+                        android:text="女"
+                        android:id="@+id/woman"
+                        android:layout_weight="1"
+                        android:textSize="@dimen/textsize"
+                        android:textColor="@drawable/radiobutton_textcolor"
+                        android:buttonTint="@drawable/radiobutton_textcolor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RadioGroup>
                 <View
                     android:layout_width="match_parent"
                     android:layout_marginTop="55dp"
@@ -324,7 +360,7 @@
                     android:layout_height="wrap_content"
                     android:text="兴趣爱好"
                     android:textColor="@color/wordColor"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/textsize"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp"
                     />
@@ -334,6 +370,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
+                    android:textSize="@dimen/textsize"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"/>
                 <View
@@ -361,7 +398,7 @@
                     android:layout_height="wrap_content"
                     android:text="家乡"
                     android:textColor="@color/wordColor"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/textsize"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp" />
 
@@ -371,6 +408,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
+                    android:textSize="@dimen/textsize"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"/>
 
@@ -393,7 +431,7 @@
                     android:layout_height="wrap_content"
                     android:text="入学年份"
                     android:textColor="@color/wordColor"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/textsize"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="15dp" />
                 <TextView
@@ -402,6 +440,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
+                    android:textSize="@dimen/textsize"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="20dp"/>
                 <View
@@ -423,7 +462,7 @@
                     android:layout_height="wrap_content"
                     android:text="个性签名"
                     android:textColor="@color/wordColor"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/textsize"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
                     />
@@ -433,6 +472,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
+                    android:textSize="@dimen/textsize"
                     android:layout_marginTop="15dp"
                     android:layout_marginLeft="20dp"/>
                 <View

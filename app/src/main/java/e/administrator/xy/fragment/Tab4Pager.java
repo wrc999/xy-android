@@ -64,14 +64,13 @@ public class Tab4Pager extends Fragment implements View.OnClickListener{
             myView.setOnClickListener(this);
             settings.setOnClickListener(this);
             SharedPreferences sp = getContext().getSharedPreferences("data", Context.MODE_PRIVATE);
-            nickName.setText(sp.getString("nickName","您还未登录"));
+            nickName.setText(sp.getString("nickName","还没有昵称哟"));
             account.setText(sp.getString("account","请先登录"));
             try{
                 if (JMessageClient.getMyInfo().getAvatarFile()!=null){
                     Glide.with(getContext()).load(JMessageClient.getMyInfo().getAvatarFile()).into(userPic);
                 }else {
-                    Intent intent = new Intent(getContext(),LoginActivity.class);
-                    startActivity(intent);
+                    Glide.with(getContext()).load(R.mipmap.activity_people).into(userPic);
                 }
             }catch (Exception e){
                 e.printStackTrace();

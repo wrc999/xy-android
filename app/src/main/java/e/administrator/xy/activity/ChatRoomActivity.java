@@ -198,12 +198,14 @@ public class ChatRoomActivity extends AppCompatActivity {
         adapter.setOnMsgClickListener(new MsgListAdapter.OnMsgClickListener<MyMessage>() {
             @Override
             public void onMessageClick(MyMessage message) {
-                if (message.getMediaFilePath()!=null&message.getMediaFilePath()!=""){
+                if (message.getType()==3||message.getType()==4){
                     ArrayList<String> imageList = new ArrayList<String>();
                     imageList.add(message.getMediaFilePath());
                     Intent intent = new Intent(ChatRoomActivity.this, ImageBrowseActivity.class);
                     intent.putStringArrayListExtra("imageList", imageList);
                     startActivity(intent);
+                }else{
+                    Toast.makeText(ChatRoomActivity.this, "您单击了"+message.getText(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

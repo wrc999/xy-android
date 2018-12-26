@@ -131,7 +131,6 @@ public class conversion extends AppCompatActivity {
     private void initConversion() {
         final List<Conversation> conversationList = JMessageClient.getConversationList();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager.HORIZONTAL, 1, getResources().getColor((R.color.txtGray))));
         ConversationAdapter conversationAdapter = new ConversationAdapter(this, conversationList);
         mRecyclerView.setAdapter(conversationAdapter);
 

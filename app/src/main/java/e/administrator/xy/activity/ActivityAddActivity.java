@@ -68,7 +68,7 @@ public class ActivityAddActivity extends AppCompatActivity implements View.OnCli
     private RadioButton radioButton;
     private int online;
     private EditText name,place,intro,peopleNum;
-    private LinearLayout activityAddLinearAva;
+    private LinearLayout activityAddLinearAva,activityAddPlace;
     private ImageView ava,pic1,pic2,pic3;
     private TextView activityAdd,starttime,endtime;
     private RelativeLayout returnGc;
@@ -91,6 +91,7 @@ public class ActivityAddActivity extends AppCompatActivity implements View.OnCli
     private void intiViews() {
         methodRequiresTwoPermission();
         name = (EditText) findViewById(R.id.et_activityAddName);
+        activityAddPlace = findViewById(R.id.activityAddPlace);
         place = (EditText) findViewById(R.id.et_activityAddPlace);
         starttime = (TextView) findViewById(R.id.et_activityAddStartTime);
         starttime.setOnClickListener(this);
@@ -110,14 +111,17 @@ public class ActivityAddActivity extends AppCompatActivity implements View.OnCli
         returnGc.setOnClickListener(this);
         activityAdd.setOnClickListener(this);
         radioGroup = findViewById(R.id.activityAddOnLineRadioGroup);
+        radioGroup.check(R.id.underLine);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 radioButton = (RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
                 if (radioButton.getText().toString().equals("线上活动")){
                     online = 1;
+                    activityAddPlace.setVisibility(View.GONE);
                 }else {
                     online = 0;
+                    activityAddPlace.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -310,17 +314,17 @@ public class ActivityAddActivity extends AppCompatActivity implements View.OnCli
             for (int i=0;i<picPath.size();i++){
                 if (picPath.get(i)!=null){
                     UploadManager uploadManager = new UploadManager();
+                    String qiniuKey = this.getString(R.string.qiniuKey);
                     String key = "activityPic/"+sdf.format(new Date());
-                    if (i ==0){params.put("pic1","http://p9sertmb8.bkt.clouddn.com/" + key);}
-                    if (i ==1){params.put("pic2","http://p9sertmb8.bkt.clouddn.com/" + key);}
-                    if (i ==2){params.put("pic3","http://p9sertmb8.bkt.clouddn.com/" + key);}
+                    if (i ==0){params.put("pic1",qiniuKey + key);}
+                    if (i ==1){params.put("pic2",qiniuKey + key);}
+                    if (i ==2){params.put("pic3",qiniuKey + key);}
                     uploadManager.put(picPath.get(i), key, Auth.create(constant.AccessKey, constant.SecretKey).uploadToken(constant.bucket), new UpCompletionHandler() {
                         @Override
                         public void complete(String key, ResponseInfo info, JSONObject res) {
                             // info.error中包含了错误信息，可打印调试
                             // 上传成功后将key值上传到自己的服务器
                             if (info.isOK()) {
-                                String headpicavaPath = "http://p9sertmb8.bkt.clouddn.com/" + key;
                             }
                         }
                     }, null);
@@ -343,6 +347,7 @@ public class ActivityAddActivity extends AppCompatActivity implements View.OnCli
                 try {
                     String json = new String(responseBody,"utf-8");
                     if (!json.isEmpty()){
+                        Toast.makeText(ActivityAddActivity.this, "发布成功，请等待管理员审核", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ActivityAddActivity.this,MainActivity.class);
                         intent.putExtra("id",3);
                         startActivity(intent);

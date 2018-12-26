@@ -6,9 +6,6 @@
     android:orientation="vertical"
     tools:context="e.administrator.xy.fragment.Tab3Pager">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <RelativeLayout
             android:id="@+id/tab3_Title"
             android:layout_width="match_parent"
@@ -22,350 +19,357 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tab3_Title">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+        <com.cjj.MaterialRefreshLayout
+            app:overlay="true"
+            app:wave_show="true"
+            app:wave_color="#90ffffff"
+            android:id="@+id/refresh_tab3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <!-- 1.搜索框 -->
-            <LinearLayout
-                android:id="@+id/Tab3_search"
-                android:orientation="horizontal"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/bgGray"
+            android:layout_height="wrap_content">
+            <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:padding="5dp"
-                    android:src="@mipmap/search1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp" />
-                <TextView
-                    android:text="搜活动"
-                    android:textSize="@dimen/textsize"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <ImageView
-                android:src="@mipmap/skate"
-                android:scaleType="fitXY"
-                android:layout_width="match_parent"
-                android:layout_height="150dp" />
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:paddingTop="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tab3_Title">
                 <LinearLayout
-                    android:id="@+id/tab3_newActivity"
-                    android:layout_weight="1"
                     android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/newactivity"
-                        android:scaleType="fitXY"
-                        app:riv_oval="true"/>
-                    <TextView
-                        android:text="最新活动"
-                        android:layout_marginTop="5dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/tab3_hotActivity"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:layout_width="37dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@mipmap/hotactivity"
-                        app:riv_oval="true" />
-                    <TextView
-                        android:text="热么活动"
-                        android:layout_marginTop="5dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/tab3_endActivity"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/end"
-                        android:scaleType="fitXY"
-                        app:riv_oval="true"/>
-                    <TextView
-                        android:text="已结束"
-                        android:layout_marginTop="5dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/tab3_examineActivity"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/examine"
-                        android:scaleType="fitXY"
-                        app:riv_oval="true"/>
-                    <TextView
-                        android:text="待审核"
-                        android:layout_marginTop="5dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/tab3_falseExamineActivity"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:src="@mipmap/falseexamine"
-                        android:scaleType="fitXY"
-                        app:riv_oval="true"/>
-                    <TextView
-                        android:text="未通过"
-                        android:layout_marginTop="5dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- 2.线上活动 -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@mipmap/onlineactivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="线上活动"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="@dimen/textsize"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="更多"
-                    android:id="@+id/onlineMore"
-                    android:textSize="@dimen/textsize"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:id="@+id/firstOnline"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp">
-                    <ImageView
-                        android:id="@+id/firstOnlineAva"
-                        android:src="@mipmap/cat"
-                        android:scaleType="fitXY"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp" />
-                    <TextView
-                        android:id="@+id/firstOnlineTime"
-                        android:textSize="6dp"
-                        android:background="@color/blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:text="建立简历就可怜见"
-                        android:id="@+id/firstOnlineName"
-                        android:paddingLeft="5dp"
-                        android:gravity="bottom"
-                        android:singleLine="true"
-                        android:maxEms="8"
-                        android:ellipsize="end"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/textsize"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:id="@+id/secondOnline"
-                    android:layout_weight="1"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp">
-                    <ImageView
-                        android:id="@+id/secondOnlineAva"
-                        android:src="@mipmap/cat"
-                        android:scaleType="fitXY"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp" />
-                    <TextView
-                        android:id="@+id/secondOnlineTime"
-                        android:textSize="6dp"
-                        android:background="@color/blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:text="建立简历就可怜见"
-                        android:id="@+id/secondOnlineName"
-                        android:paddingLeft="5dp"
-                        android:gravity="bottom"
-                        android:singleLine="true"
-                        android:maxEms="8"
-                        android:ellipsize="end"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/textsize"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp" />
-
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:id="@+id/thirdOnline"
-                    android:layout_weight="1"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp">
-                    <ImageView
-                        android:id="@+id/thirdOnlineAva"
-                        android:src="@mipmap/cat"
-                        android:scaleType="fitXY"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp" />
-                    <TextView
-                        android:id="@+id/thirdOnlineTime"
-                        android:textSize="6dp"
-                        android:background="@color/blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:text="建立简历就可怜见"
-                        android:id="@+id/thirdOnlineName"
-                        android:paddingLeft="5dp"
-                        android:gravity="bottom"
-                        android:singleLine="true"
-                        android:maxEms="8"
-                        android:ellipsize="end"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/textsize"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp" />
-                </RelativeLayout>
-                <RelativeLayout
-                    android:id="@+id/fourthOnline"
-                    android:layout_weight="1"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp">
-                    <ImageView
-                        android:id="@+id/fourthOnlineAva"
-                        android:src="@mipmap/cat"
-                        android:scaleType="fitXY"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp" />
-                    <TextView
-                        android:id="@+id/fourthOnlineTime"
-                        android:textSize="6dp"
-                        android:background="@color/blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:text="建立简历就可怜见"
-                        android:id="@+id/fourthOnlineName"
-                        android:paddingLeft="5dp"
-                        android:gravity="bottom"
-                        android:singleLine="true"
-                        android:maxEms="8"
-                        android:ellipsize="end"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/textsize"
-                        android:layout_width="200dp"
-                        android:layout_height="100dp" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <!-- 2.线下活动 -->
-            <LinearLayout
-                android:orientation="horizontal"
-                android:paddingTop="8dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:src="@mipmap/underlieactivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:text="线下活动"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="@dimen/textsize"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/tab3_underLineActivityList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
-</RelativeLayout>
+                    android:layout_height="match_parent">
+                    <!-- 1.搜索框 -->
+                    <LinearLayout
+                        android:id="@+id/Tab3_search"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/bgGray"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:padding="5dp"
+                            android:src="@mipmap/search1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <TextView
+                            android:text="搜活动"
+                            android:textSize="@dimen/textsize"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:src="@mipmap/skate"
+                        android:scaleType="fitXY"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:paddingTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:id="@+id/tab3_newActivity"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:src="@mipmap/newactivity"
+                                android:scaleType="fitXY"
+                                app:riv_oval="true"/>
+                            <TextView
+                                android:text="最新活动"
+                                android:layout_marginTop="5dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/tab3_hotActivity"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="37dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:scaleType="fitXY"
+                                android:src="@mipmap/hotactivity"
+                                app:riv_oval="true" />
+                            <TextView
+                                android:text="热么活动"
+                                android:layout_marginTop="5dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/tab3_endActivity"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:src="@mipmap/end"
+                                android:scaleType="fitXY"
+                                app:riv_oval="true"/>
+                            <TextView
+                                android:text="已结束"
+                                android:layout_marginTop="5dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/tab3_examineActivity"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:src="@mipmap/examine"
+                                android:scaleType="fitXY"
+                                app:riv_oval="true"/>
+                            <TextView
+                                android:text="待审核"
+                                android:layout_marginTop="5dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/tab3_falseExamineActivity"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:src="@mipmap/falseexamine"
+                                android:scaleType="fitXY"
+                                app:riv_oval="true"/>
+                            <TextView
+                                android:text="未通过"
+                                android:layout_marginTop="5dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- 2.线上活动 -->
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:paddingBottom="8dp"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@mipmap/onlineactivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="线上活动"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="@dimen/textsize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="更多"
+                            android:id="@+id/onlineMore"
+                            android:textSize="@dimen/textsize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <RelativeLayout
+                            android:id="@+id/firstOnline"
+                            android:layout_weight="1"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_width="200dp"
+                            android:layout_height="100dp">
+                            <ImageView
+                                android:id="@+id/firstOnlineAva"
+                                android:src="@mipmap/cat"
+                                android:scaleType="fitXY"
+                                android:layout_width="200dp"
+                                android:layout_height="100dp" />
+                            <TextView
+                                android:id="@+id/firstOnlineTime"
+                                android:textSize="6dp"
+                                android:background="@color/blue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="建立简历就可怜见"
+                                android:id="@+id/firstOnlineName"
+                                android:paddingLeft="5dp"
+                                android:gravity="bottom"
+                                android:singleLine="true"
+                                android:maxEms="8"
+                                android:ellipsize="end"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/textsize"
+                                android:layout_width="200dp"
+                                android:layout_height="100dp" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/secondOnline"
+                            android:layout_weight="1"
+                            android:layout_marginRight="5dp"
+                            android:layout_width="200dp"
+                            android:layout_height="100dp">
+                            <ImageView
+                                android:id="@+id/secondOnlineAva"
+                                android:src="@mipmap/cat"
+                                android:scaleType="fitXY"
+                                android:layout_width="200dp"
+                                android:layout_height="100dp" />
+                            <TextView
+                                android:id="@+id/secondOnlineTime"
+                                android:textSize="6dp"
+                                android:background="@color/blue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="建立简历就可怜见"
+                                android:id="@+id/secondOnlineName"
+                                android:paddingLeft="5dp"
+                                android:gravity="bottom"
+                                android:singleLine="true"
+                                android:maxEms="8"
+                                android:ellipsize="end"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/textsize"
+                                android:layout_width="200dp"
+                                android:layout_height="100dp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <RelativeLayout
+                            android:id="@+id/thirdOnline"
+                            android:layout_weight="1"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_width="200dp"
+                            android:layout_height="100dp">
+                            <ImageView
+                                android:id="@+id/thirdOnlineAva"
+                                android:src="@mipmap/cat"
+                                android:scaleType="fitXY"
+                                android:layout_width="200dp"
+                                android:layout_height="100dp" />
+                            <TextView
+                                android:id="@+id/thirdOnlineTime"
+                                android:textSize="6dp"
+                                android:background="@color/blue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="建立简历就可怜见"
+                                android:id="@+id/thirdOnlineName"
+                                android:paddingLeft="5dp"
+                                android:gravity="bottom"
+                                android:singleLine="true"
+                                android:maxEms="8"
+                                android:ellipsize="end"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/textsize"
+                                android:layout_width="200dp"
+                                android:layout_height="100dp" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/fourthOnline"
+                            android:layout_weight="1"
+                            android:layout_marginRight="5dp"
+                            android:layout_width="200dp"
+                            android:layout_height="100dp">
+                            <ImageView
+                                android:id="@+id/fourthOnlineAva"
+                                android:src="@mipmap/cat"
+                                android:scaleType="fitXY"
+                                android:layout_width="200dp"
+                                android:layout_height="100dp" />
+                            <TextView
+                                android:id="@+id/fourthOnlineTime"
+                                android:textSize="6dp"
+                                android:background="@color/blue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="建立简历就可怜见"
+                                android:id="@+id/fourthOnlineName"
+                                android:paddingLeft="5dp"
+                                android:gravity="bottom"
+                                android:singleLine="true"
+                                android:maxEms="8"
+                                android:ellipsize="end"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/textsize"
+                                android:layout_width="200dp"
+                                android:layout_height="100dp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <!-- 2.线下活动 -->
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:paddingTop="8dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@mipmap/underlieactivity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:text="线下活动"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="@dimen/textsize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/tab3_underLineActivityList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+        </com.cjj.MaterialRefreshLayout>
 </LinearLayout>
 

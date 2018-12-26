@@ -1,6 +1,7 @@
 package e.administrator.xy.activity;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -79,6 +80,7 @@ public class clubAdd extends AppCompatActivity implements View.OnClickListener, 
     // 设置图片名字
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
     File file;
+    private ProgressDialog mProgressDialog = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -192,6 +194,8 @@ public class clubAdd extends AppCompatActivity implements View.OnClickListener, 
     }
 
     private void addClub() {
+        mProgressDialog = ProgressDialog.show(clubAdd.this, "提示：", "正在上传社团信息。。。");
+        mProgressDialog.setCanceledOnTouchOutside(true);
         if (avaPath==null || "".equals(avaPath.toString())){
             Toast.makeText(getApplicationContext(), "请上传活动海报", Toast.LENGTH_SHORT).show();
             return;
@@ -212,8 +216,8 @@ public class clubAdd extends AppCompatActivity implements View.OnClickListener, 
             Toast.makeText(getApplicationContext(), "请选择一个标签", Toast.LENGTH_SHORT).show();
             return;
         }
-        SharedPreferences sp = this.getSharedPreferences("data", Context.MODE_PRIVATE);
-        AsyncHttpClient client = new AsyncHttpClient();
+        final SharedPreferences sp = this.getSharedPreferences("data", Context.MODE_PRIVATE);
+        final AsyncHttpClient client = new AsyncHttpClient();
         final RequestParams params = new RequestParams();
         //如果用户没有选择照片则不上传活动海报
         if (avaPath!=null){
@@ -231,58 +235,73 @@ public class clubAdd extends AppCompatActivity implements View.OnClickListener, 
                 }
             }, null);
         }
-
-        params.put("account",sp.getString("account",null));
-        params.put("clubSchool",sp.getString("school",null));
-        params.put("clubName",name.getText());
-        params.put("clubSlogan",slogan.getText());
-        params.put("clubIntro",intro.getText());
-        params.put("sort",sb.toString().trim());
-        client.post(constant.BASE_URL+constant.club_add,params, new AsyncHttpResponseHandler() {
+        //创建社团聊天群
+        JMessageClient.createGroup(name.getText().toString().trim(), intro.getText().toString().trim(),new File(avaPath),"png",new CreateGroupCallback() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                try {
-                    String json = new String(responseBody,"utf-8");
-                    if (!json.isEmpty()){
-                        //创建社团聊天群
-                        JMessageClient.createGroup(name.getText().toString().trim(), intro.getText().toString().trim(),new File(avaPath),"png",new CreateGroupCallback() {
-                            @Override
-                            public void gotResult(int i, String s, long l) {
-                                    if (i==0){
-                                        //社团聊天群创建成功后发送一条信息显示出来
-                                        Conversation mConversation = JMessageClient.getGroupConversation(l);
-                                        if (mConversation == null) {
-                                            mConversation = Conversation.createGroupConversation(l);
-                                        }
-                                        TextContent textContent = new TextContent("成功创建");
-                                        //创建message实体，设置消息发送回调。
-                                        Message message = mConversation.createSendMessage(textContent);
-                                        //设置消息发送时的一些控制参数
-                                        MessageSendingOptions options = new MessageSendingOptions();
-                                        options.setNeedReadReceipt(true);//是否需要对方用户发送消息已读回执
-                                        options.setRetainOffline(true);//是否当对方用户不在线时让后台服务区保存这条消息的离线消息
-                                        options.setShowNotification(true);//是否让对方展示sdk默认的通知栏通知
-                                        //发送消息
-                                        JMessageClient.sendMessage(message, options);
-                                    }
-                            }
-                        });
-                        Intent intent = new Intent(clubAdd.this,MainActivity.class);
-                        startActivity(intent);
-                        clubAdd.this.finish();
-                    }else {
-                        Toast.makeText(clubAdd.this, "发布成功", Toast.LENGTH_SHORT).show();
+            public void gotResult(int i, String s, long l) {
+                if (i==0){
+                    //社团聊天群创建成功后发送一条信息显示出来
+                    Conversation mConversation = JMessageClient.getGroupConversation(l);
+                    if (mConversation == null) {
+                        mConversation = Conversation.createGroupConversation(l);
                     }
-                }catch (Exception e){
-                    e.printStackTrace();
+                    TextContent textContent = new TextContent("成功创建");
+                    //创建message实体，设置消息发送回调。
+                    Message message = mConversation.createSendMessage(textContent);
+                    //设置消息发送时的一些控制参数
+                    MessageSendingOptions options = new MessageSendingOptions();
+                    options.setNeedReadReceipt(true);//是否需要对方用户发送消息已读回执
+                    options.setRetainOffline(true);//是否当对方用户不在线时让后台服务区保存这条消息的离线消息
+                    options.setShowNotification(true);//是否让对方展示sdk默认的通知栏通知
+                    //发送消息
+                    JMessageClient.sendMessage(message, options);
+                    //将社团信息存储到数据库
+                    params.put("groupId",l);
+                    params.put("account",sp.getString("account",null));
+                    params.put("clubSchool",sp.getString("school",null));
+                    params.put("clubName",name.getText());
+                    params.put("clubSlogan",slogan.getText());
+                    params.put("clubIntro",intro.getText());
+                    params.put("sort",sb.toString().trim());
+                    client.post(constant.BASE_URL+constant.club_add,params, new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                            try {
+                                String json = new String(responseBody,"utf-8");
+                                if (!json.isEmpty()){
+                                    Thread.sleep(1000);
+                                    mProgressDialog.dismiss();
+                                    Intent intent = new Intent(clubAdd.this,MainActivity.class);
+                                    startActivity(intent);
+                                    clubAdd.this.finish();
+                                    Toast.makeText(clubAdd.this, "发布成功，请等待管理员审核", Toast.LENGTH_SHORT).show();
+                                }
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                            Toast.makeText(clubAdd.this, "请刷新重试", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else {
+                    Toast.makeText(clubAdd.this, "发布失败，请重试", Toast.LENGTH_SHORT).show();
                 }
             }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(clubAdd.this, "请刷新重试", Toast.LENGTH_SHORT).show();
-            }
         });
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(1000);
+//                    mProgressDialog.dismiss();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
     }
 
     //todo:调用相机拍照

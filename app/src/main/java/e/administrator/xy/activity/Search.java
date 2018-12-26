@@ -81,7 +81,7 @@ public class Search extends AppCompatActivity {
                                     TopicAdapter adapter = new TopicAdapter(Search.this, topicList);
                                     mRecyclerView.setAdapter(adapter);
                                 }else {
-                                    Toast.makeText(Search.this, "请重试", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Search.this, "搜索内容为空", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (Exception e){
                                 e.printStackTrace();
@@ -138,7 +138,7 @@ public class Search extends AppCompatActivity {
                                     ActivityAdapter adapter = new ActivityAdapter(Search.this, activityList);
                                     mRecyclerView.setAdapter(adapter);
                                 }else {
-                                    Toast.makeText(Search.this, "请重试", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Search.this, "搜索内容为空", Toast.LENGTH_SHORT).show();
                                 }
                             }catch (Exception e){
                                 e.printStackTrace();

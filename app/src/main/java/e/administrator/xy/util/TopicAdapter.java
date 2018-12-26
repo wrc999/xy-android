@@ -82,7 +82,7 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof MyViewHolder) {
             final MyViewHolder myViewHolder = (MyViewHolder) holder;
-            Glide.with(context).load(topicList.get(position).getTopicPic()).into(myViewHolder.topicAva);
+            Glide.with(context).load(topicList.get(position).getTopicPic()).placeholder(R.mipmap.loading).into(myViewHolder.topicAva);
             myViewHolder.topicName.setText(topicList.get(position).getTopicName());
             myViewHolder.topicIntro.setText(topicList.get(position).getTopicIntro());
             myViewHolder.topicJoins.setText("讨论："+topicList.get(position).getTopicJoins()+"");

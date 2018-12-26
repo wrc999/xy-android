@@ -1,5 +1,6 @@
 package e.administrator.xy.activity;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -55,6 +56,7 @@ public class ViewListActivity extends AppCompatActivity implements View.OnClickL
     private List<view> viewLists = new ArrayList<view>();
     private RelativeLayout returnclubDetail;
     private TextView uploadClubPic;
+    private ProgressDialog mProgressDialog = null;
 
     private List<String> path = new ArrayList<String>();
     private String clubName;//接收上一个页面传过来的社团名，并将它转为拼音首字母
@@ -145,10 +147,12 @@ public class ViewListActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        mProgressDialog = ProgressDialog.show(ViewListActivity.this, "提示：", "正在上传，请稍后");
+        mProgressDialog.setCanceledOnTouchOutside(true);
         ContentResolver resolver = getContentResolver();
         //本地选取活动海报
         if (requestCode == 9 && resultCode==RESULT_OK) {
-            List<Uri> mSelected = Matisse.obtainResult(data);
+            final List<Uri> mSelected = Matisse.obtainResult(data);
             try {
                 for (int i=0;i<mSelected.size();i++) {
                     Uri originalUri = mSelected.get(i);        //获得图片的uri
@@ -161,8 +165,7 @@ public class ViewListActivity extends AppCompatActivity implements View.OnClickL
                     String path = cursor.getString(column_index);
                     addView(path,i);
                 }
-                initView();
-                Toast.makeText(this, "成功上传"+mSelected.size()+"张照片", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewListActivity.this, "成功上传"+mSelected.size()+"张照片", Toast.LENGTH_SHORT).show();
             }catch (Exception e) {
                 e.printStackTrace();
             }
@@ -192,6 +195,8 @@ public class ViewListActivity extends AppCompatActivity implements View.OnClickL
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                             success++;
+                            initView();
+                            mProgressDialog.dismiss();
                         }
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {

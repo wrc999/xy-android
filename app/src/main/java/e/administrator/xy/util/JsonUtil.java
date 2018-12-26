@@ -1,5 +1,7 @@
 package e.administrator.xy.util;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -119,9 +121,9 @@ public class JsonUtil {
         List<activity> activities = JsonSortActivity(list);
         List<activity> activityList = new ArrayList<activity>();
         for (int i=0;i<activities.size();i++){
-            int endTime = Integer.parseInt(activities.get(i).getEndtime().replace(".",""));
+            int endTime = Integer.parseInt(activities.get(i).getEndtime().replace("-",""));
             int currentDate = Integer.parseInt(DateUtil.getCurrentDate().replace("-",""));
-            if (endTime>currentDate){
+            if (endTime<currentDate){
                 activityList.add(activities.get(i));
             }
             }

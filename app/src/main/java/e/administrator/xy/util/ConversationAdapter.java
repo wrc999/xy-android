@@ -49,7 +49,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
     @Override
     public void onBindViewHolder(final FriendView holder, final int position) {
         Conversation conversation = conversationList.get(position);
-        Glide.with(context).load(conversation.getAvatarFile()).error(R.mipmap.activity_people).into(holder.friendImage);
+        Glide.with(context).load(conversation.getAvatarFile()).placeholder(R.mipmap.loading).into(holder.friendImage);
         holder.userName.setText(conversation.getTitle());
         if (conversation.getUnReadMsgCnt()==0){
             holder.unReadMessage.setText(null);
